@@ -15,11 +15,20 @@ set(CMAKE_CXX_FLAGS_DEBUG	"-g")
 set(CMAKE_BUILD_TYPE		Release)
 add_definitions(-DNDEBUG)
 
+find_package(X11 REQUIRED)
+
 file(GLOB sources *.cc)
 
 add_library(TUXv++ SHARED ${sources})
 
-target_link_libraries(TUXv++ TUv++)
+target_link_libraries(
+    TUXv++
+    TUv++
+    ${X11_Xaw3d_LIB}
+    ${X11_Xv_LIB}
+    ${X11_Xt_LIB}
+    ${X11_Xmu_LIB}
+    ${X11_LIBRARIES})
 
 install(TARGETS TUXv++ LIBRARY DESTINATION lib)
 
