@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 2.4)
-
 project(TUXv++)
 
 if(COMMAND cmake_policy)
@@ -19,17 +18,13 @@ find_package(X11 REQUIRED)
 
 file(GLOB sources *.cc)
 
-add_library(TUXv++ SHARED ${sources})
+add_library(${PROJECT_NAME} SHARED ${sources})
 
 target_link_libraries(
-    TUXv++
+    ${PROJECT_NAME}
     TUv++
-    ${X11_Xaw3d_LIB}
-    ${X11_Xv_LIB}
-    ${X11_Xt_LIB}
-    ${X11_Xmu_LIB}
-    ${X11_LIBRARIES})
+    ${X11_Xv_LIB})
 
-install(TARGETS TUXv++ LIBRARY DESTINATION lib)
+install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
 
 add_subdirectory(TU)
