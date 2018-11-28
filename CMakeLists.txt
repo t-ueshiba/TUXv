@@ -16,14 +16,11 @@ add_definitions(-DNDEBUG)
 
 find_package(X11 REQUIRED)
 
+link_directories(${CMAKE_INSTALL_PREFIX}/lib)
+
 file(GLOB sources *.cc)
-
 add_library(${PROJECT_NAME} SHARED ${sources})
-
-target_link_libraries(
-    ${PROJECT_NAME}
-    TUv++
-    ${X11_Xv_LIB})
+target_link_libraries(${PROJECT_NAME} TUv++ ${X11_Xv_LIB})
 
 install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
 
