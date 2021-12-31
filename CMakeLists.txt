@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(TUXv++)
+project(TUXv)
 
 if(COMMAND cmake_policy)
     cmake_policy(SET CMP0003 NEW)
@@ -24,7 +24,7 @@ link_directories(${CMAKE_INSTALL_PREFIX}/lib)
 
 file(GLOB sources *.cc)
 add_library(${PROJECT_NAME} SHARED ${sources})
-target_link_libraries(${PROJECT_NAME} TUv++ ${X11_Xv_LIB})
+target_link_libraries(${PROJECT_NAME} TUv ${X11_Xv_LIB})
 
 install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
 
